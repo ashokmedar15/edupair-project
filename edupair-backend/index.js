@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
+const profileRoutes = require('./routes/profile');
 
 dotenv.config();
 const app = express();
@@ -15,6 +16,7 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.error('MongoDB connection error:', err));
 
 app.use('/api/auth', authRoutes);
+app.use('/api/profile', profileRoutes);
 
 app.get('/', (req, res) => res.send('EduPair Backend'));
 
