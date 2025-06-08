@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
 const profileRoutes = require('./routes/profile');
+const matchesRoutes = require('./routes/matches');
 
 dotenv.config();
 const app = express();
@@ -17,6 +18,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
+app.use('/api/matches', matchesRoutes);
 
 app.get('/', (req, res) => res.send('EduPair Backend'));
 
